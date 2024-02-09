@@ -88,7 +88,7 @@ const page = async ({ params }: Props) => {
               : 'Get Started'
           }
           highlightDescription="Want to modify your plan? You can do this here. If you have
-          further question contact support@plura-app.com"
+          further question contact support@asynk-app.com"
           highlightTitle="Plan Options"
           description={
             agencySubscription?.Subscription?.active === true
@@ -100,9 +100,9 @@ const page = async ({ params }: Props) => {
             agencySubscription?.Subscription?.active === true
               ? currentPlanDetails?.features || []
               : currentPlanDetails?.features ||
-                pricingCards.find((pricing) => pricing.title === 'Starter')
-                  ?.features ||
-                []
+              pricingCards.find((pricing) => pricing.title === 'Starter')
+                ?.features ||
+              []
           }
           title={
             agencySubscription?.Subscription?.active === true
@@ -120,7 +120,7 @@ const page = async ({ params }: Props) => {
               //@ts-ignore
               addOn.default_price?.unit_amount
                 ? //@ts-ignore
-                  `$${addOn.default_price.unit_amount / 100}`
+                `$${addOn.default_price.unit_amount / 100}`
                 : '$0'
             }
             buttonCta="Subscribe"
