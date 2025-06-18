@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  web:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npm install && npm run build && npm start"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: asynk
+      POSTGRES_PASSWORD: asynk
+      POSTGRES_DB: asynk
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=UTC
+    volumes:
+      - n8n-data:/home/node/.n8n
+volumes:
+  db-data:
+  n8n-data:
